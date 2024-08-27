@@ -187,7 +187,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>salon skip<br>予約フォーム</h1>
+        <h1>taki salon<br>予約フォーム</h1>
         <div class="label">お客様名※必須</div>
         <input type="text" id="name" placeholder="お名前を入力してください">
 
@@ -219,7 +219,7 @@
         </div>
 
         <div id="female" class="menu-section">
-            <label>♦︎その他まつげメニュー（まつげ・メイク）♦︎</label>
+            <label>◆その他まつげメニュー（まつげ・メイク）◆</label>
             <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">ポイントメイク</button>
                 <button type="button" onclick="selectSymptom(this)">ヘアセット</button>
@@ -232,8 +232,7 @@
             <label>◆脱毛メニュー◆</label>
             <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">【ご新規様】まゆ毛WAX※Mensは紹介のみ</button>
-                <button type="button" onclick="selectSymptom(this)">【ご新規様】まゆ毛WAX※Mensは紹介のみ：60分
-【2回目以降】まゆげWAX</button>
+                <button type="button" onclick="selectSymptom(this)">【2回目以降】まゆげWAX</button>
                 <button type="button" onclick="selectSymptom(this)">フェイシャルWAX(パック付き)</button>
             </div>
             <label>オプション</label>
@@ -304,24 +303,22 @@
             fetchAvailability(currentDate);
         });
 
-        function selectVisit(element) {
-            /* 訪問回数ボタンの選択状態をリセット */
-            document.getElementById('firstVisit').classList.remove('active');
-            document.getElementById('repeatVisit').classList.remove('active');
-            /* クリックされたボタンを選択状態にする */
-            element.classList.add('active');
-            /* 選択された訪問回数を変数に格納 */
-            visitCount = element.innerText;
-        }
+function selectirradiations(element) {
+    // クリックされたボタンの選択状態を切り替える
+    element.classList.toggle('active');
+    
+    // 選択されたボタンのテキストを取得する
+    const selectedButtons = document.querySelectorAll('.irradiations button.active');
+    const selectedIrradiations = Array.from(selectedButtons).map(button => button.innerText);
+    
+    // 選択された症状を変数に格納
+    irradiationsCount = selectedIrradiations.join(', ');
+}
 
-        function selectirradiations(element) {
-            /* 訪問回数ボタンの選択状態をリセット */
-            document.getElementById('firstirradiations').classList.remove('active');
-            document.getElementById('repeatirradiations').classList.remove('active');
-            /* クリックされたボタンを選択状態にする */
+        function selectVisit(element) {
+            const buttons = document.querySelectorAll('.visit-buttons button');
+            buttons.forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
-            /* 選択された訪問回数を変数に格納 */
-            irradiationsCount = element.innerText;
         }
 
         function showMenu(menu) {
@@ -426,7 +423,7 @@ async function fetchAvailability(date) {
         return;
     }
 
-    const url = 'https://script.google.com/macros/s/AKfycbwvV8CAdTuusOV2YIjig2oRxxAoCsOjbdbADddD1DwQ_kpvAV_SF3UKB5KJ8n6d5xctKg/exec' + 
+    const url = 'https://script.google.com/macros/s/AKfycbwCxnJaxGZ46c3TnnesuZcD_zuxuVoSHoDHo5MxkRzChcK5vZDwBs4HstzkXO-KLyuDYA/exec' + 
                 `?startTime=${startTime.toISOString()}&endTime=${endTime.toISOString()}`;
 
     try {
