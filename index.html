@@ -596,7 +596,7 @@ for (let i = 0; i < 7; i++) {
         }
 
         // ×と×の間のセル数が3未満の場合、その間のセルを×に変更
-        if (end !== -1 && end - start < 4) {
+        if (end !== -1 && end - start < 3) {
             for (let k = start + 1; k < end; k++) {
                 const cell = table.rows[k].cells[i + 1];
                 cell.textContent = '✕';
@@ -613,8 +613,8 @@ for (let i = 0; i < 7; i++) {
 
     // ×と×の間のセル数が3未満の場合、その間のセルを×にする部分の後に以下を追加
     for (let i = 0; i < 7; i++) {
-        const twentyOClockRow = times.indexOf('18:00');
-        const twentyOneOClockRow = times.indexOf('18:30');
+        const twentyOClockRow = times.indexOf('16:30');
+        const twentyOneOClockRow = times.indexOf('17:00');
 
         for (let j = twentyOClockRow; j < times.length; j++) {
             const cell = table.rows[j].cells[i + 1];
