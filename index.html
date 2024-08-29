@@ -187,13 +187,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: center; /* ボタンを中央揃えにする */
+    justify-content: space-between; /* ボタンを等間隔で配置 */
     margin-bottom: 20px;
 }
 
 .menu-sections button {
-    flex: 1;
-    padding: 11px 12px; /* ボタンのサイズを少し小さく */
+    flex-basis: calc(33.33% - 10px); /* 3列の等間隔にするためにボタンの幅を設定 */
+    padding: 11px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f7f7f7;
@@ -201,7 +201,7 @@
     box-sizing: border-box;
     text-align: center;
     white-space: nowrap;
-    margin-bottom: 12px; /* ボタンの間に余白を追加 */
+    margin-bottom: 12px;
 }
 
 .menu-sections button.active {
