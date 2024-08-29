@@ -183,6 +183,61 @@
 #repairLabel, #repairButtons {
     display: none;
 }
+.menu-sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.menu-sections button {
+    width: auto; /* 横幅を自動調整 */
+    max-width: 100%; /* ボタンがコンテナからはみ出さないように設定 */
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap; /* テキストの折り返しを禁止 */
+    height: auto;
+    min-height: 50px;
+}
+
+.menu-sections button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-sections button:active {
+    background-color: #004080;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .menu-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-sections button {
+        max-width: 100%; /* スマホやタブレットなど狭い画面ではボタンがコンテナ内に収まるように調整 */
+        width: auto;
+    }
+}
+
+.menu-sections button.active {
+    background-color: #444;
+    color: #fff;
+}
     </style>
 </head>
 <body>
@@ -200,14 +255,17 @@
             <button type="button" id="repeatVisit" onclick="selectVisit(this)">2回目以降</button>
         </div>
 
-        <div class="label">メニューをお選びください</div>
-        <div class="menu-sections">
-            <button type="button" onclick="showMenu('male')">その他まつげメニュー</button>
-            <button type="button" onclick="showMenu('female')">その他まつげメニュー（まつげ・メイク）</button>
-            <button type="button" onclick="showMenu('whitening')">脱毛</button>
+        <!-- 性別が選択されるまで非表示にする部分 -->
+        <div class="label" id="menuLabel">メニューをお選びください</div>
+        <div class="menu-sections" id="menuSections">
+            <button type="button" onclick="showMenu('male1')">その他まつげメニュー</button>
+            <button type="button" onclick="showMenu('male2')">その他まつげメニュー</button>
+            <button type="button" onclick="showMenu('malenew')">その他まつげメニュー（まつげ・メイク）</button>
+            <button type="button" onclick="showMenu('female1')">脱毛</button>
+            <button type="button" onclick="showMenu('female2')">脱毛</button>
         </div>
 
-        <div id="male" class="menu-section">
+        <div id="male1" class="menu-section">
             <label>◆その他まつげメニュー◆</label>
             <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">まつ毛パーマ</button>
@@ -218,7 +276,17 @@
             </div>
         </div>
 
-        <div id="female" class="menu-section">
+        <div id="male2" class="menu-section">
+            <label>◆その他まつげメニュー◆</label>
+            <div class="symptoms">
+                <button type="button" onclick="selectSymptom(this)">まつ毛パーマ</button>
+                <button type="button" onclick="selectSymptom(this)">下まつ毛パーマ</button>
+                <button type="button" onclick="selectSymptom(this)">まつ毛パーマ上下セット</button>
+                <button type="button" onclick="selectSymptom(this)">アイシャンプー</button>
+            </div>
+        </div>
+
+        <div id="malenew" class="menu-section">
             <label>◆その他まつげメニュー（まつげ・メイク）◆</label>
             <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">ポイントメイク</button>
@@ -228,10 +296,25 @@
             </div>
         </div>
 
-        <div id="whitening" class="menu-section">
+        <div id="female1" class="menu-section">
             <label>◆脱毛メニュー◆</label>
             <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">【ご新規様】まゆ毛WAX※Mensは紹介のみ</button>
+                <button type="button" onclick="selectSymptom(this)">フェイシャルWAX(パック付き)</button>
+            </div>
+            <label>オプション</label>
+            <div class="irradiations">
+                <button type="button" id="firstirradiations" onclick="selectirradiations(this)">【オプション】部分WAX：おでこ</button>
+                <button type="button" id="repeatirradiations" onclick="selectirradiations(this)">【オプション】部分WAX：もみあげ</button>
+                <button type="button" id="sanirradiations" onclick="selectirradiations(this)">【オプション】部分WAX：鼻まわり</button>
+                <button type="button" id="yonirradiations" onclick="selectirradiations(this)">【オプション】部分WAX：口まわり</button>
+                <button type="button" id="goirradiations" onclick="selectirradiations(this)">【オプション】部分WAX：鼻毛</button>
+            </div>
+        </div>
+
+        <div id="female2" class="menu-section">
+            <label>◆脱毛メニュー◆</label>
+            <div class="symptoms">
                 <button type="button" onclick="selectSymptom(this)">【2回目以降】まゆげWAX</button>
                 <button type="button" onclick="selectSymptom(this)">フェイシャルWAX(パック付き)</button>
             </div>
@@ -315,11 +398,39 @@ function selectirradiations(element) {
     irradiationsCount = selectedIrradiations.join(', ');
 }
 
+        // 初期状態でメニューセクションを非表示にする
+        document.getElementById('menuLabel').style.display = 'none';
+        document.getElementById('menuSections').style.display = 'none';
+
         function selectVisit(element) {
+            // 訪問回数ボタンの選択状態をリセット
             document.getElementById('firstVisit').classList.remove('active');
             document.getElementById('repeatVisit').classList.remove('active');
+            
+            // クリックされたボタンを選択状態にする
             element.classList.add('active');
+            
+            // 選択された訪問回数を変数に格納
             visitCount = element.innerText;
+            
+            // 性別が選択されたらメニューセクションを表示する
+            document.getElementById('menuLabel').style.display = 'block';
+            document.getElementById('menuSections').style.display = 'block';
+
+            // メニューの表示をリセット
+            document.querySelectorAll('.menu-sections button').forEach(button => {
+                button.style.display = 'none';
+            });
+
+            if (visitCount === '1回目') {
+                document.querySelector('button[onclick="showMenu(\'male1\')"]').style.display = 'inline-block';
+                document.querySelector('button[onclick="showMenu(\'malenew\')"]').style.display = 'inline-block';
+                document.querySelector('button[onclick="showMenu(\'female1\')"]').style.display = 'inline-block';
+            } else if (visitCount === '2回目以降') {
+                document.querySelector('button[onclick="showMenu(\'male2\')"]').style.display = 'inline-block';
+                document.querySelector('button[onclick="showMenu(\'malenew\')"]').style.display = 'inline-block';
+                document.querySelector('button[onclick="showMenu(\'female2\')"]').style.display = 'inline-block';
+            }
         }
 
 function showMenu(menu) {
@@ -332,6 +443,13 @@ function showMenu(menu) {
 
     // 選択されたメニューセクションを表示
     document.getElementById(menu).classList.add('active');
+
+    // すべてのメニューボタンの選択状態をリセット
+    document.querySelectorAll('.menu-sections button').forEach(btn => btn.classList.remove('active'));
+
+    // 選択されたボタンにactiveクラスを追加
+    const selectedButton = document.querySelector(`.menu-sections button[onclick="showMenu('${menu}')"]`);
+    selectedButton.classList.add('active');
 }
 
         function selectSymptom(button) {
