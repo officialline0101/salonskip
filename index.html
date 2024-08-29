@@ -186,52 +186,22 @@
 .menu-sections {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 15px;
-    padding: 20px;
-    background-color: #f8f9fa;
+    justify-content: center; /* ボタンを中央揃えにする */
+    margin-bottom: 20px;
 }
 
 .menu-sections button {
-    width: auto; /* 横幅を自動調整 */
-    max-width: 100%; /* ボタンがコンテナからはみ出さないように設定 */
-    padding: 10px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
+    flex: 1;
+    padding: 11px 12px; /* ボタンのサイズを少し小さく */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f7f7f7;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    white-space: nowrap; /* テキストの折り返しを禁止 */
-    height: auto;
-    min-height: 50px;
-}
-
-.menu-sections button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.menu-sections button:active {
-    background-color: #004080;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 600px) {
-    .menu-sections {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .menu-sections button {
-        max-width: 100%; /* スマホやタブレットなど狭い画面ではボタンがコンテナ内に収まるように調整 */
-        width: auto;
-    }
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 12px; /* ボタンの間に余白を追加 */
 }
 
 .menu-sections button.active {
