@@ -736,8 +736,8 @@ if (
 
     // ×と×の間のセル数が3未満の場合、その間のセルを×にする部分の後に以下を追加
     for (let i = 0; i < 7; i++) {
-        const twentyOClockRow = times.indexOf('16:45');
-        const twentyOneOClockRow = times.indexOf('17:00');
+        const twentyOClockRow = times.indexOf('15:45');
+        const twentyOneOClockRow = times.indexOf('16:00');
 
         for (let j = twentyOClockRow; j < times.length; j++) {
             const cell = table.rows[j].cells[i + 1];
