@@ -230,9 +230,9 @@
         <div class="menu-sections" id="menuSections">
             <button type="button" onclick="showMenu('male1')">まつ毛</button>
             <button type="button" onclick="showMenu('male2')">まつ毛</button>
+            <button type="button" onclick="showMenu('female1')">WAX</button>
+            <button type="button" onclick="showMenu('female2')">WAX</button>
             <button type="button" onclick="showMenu('malenew')">ヘアメイク</button>
-            <button type="button" onclick="showMenu('female1')">ワックス</button>
-            <button type="button" onclick="showMenu('female2')">ワックス</button>
         </div>
 
         <div id="male1" class="menu-section">
@@ -253,6 +253,7 @@
                 <button type="button" onclick="selectSymptom(this)">下まつ毛パーマ</button>
                 <button type="button" onclick="selectSymptom(this)">まつ毛パーマ上下セット</button>
                 <button type="button" onclick="selectSymptom(this)">アイシャンプー</button>
+                <button type="button" onclick="selectSymptom(this)">まつげパーマ+まゆげWAXセット</button>
             </div>
         </div>
 
@@ -285,7 +286,7 @@
         <div id="female2" class="menu-section">
             <label>◆脱毛メニュー◆</label>
             <div class="symptoms">
-                <button type="button" onclick="selectSymptom(this)">【2回目以降】まゆげWAX</button>
+                <button type="button" onclick="selectSymptom(this)">【2回目以降】まゆげWAX※Mensは紹介のみ</button>
                 <button type="button" onclick="selectSymptom(this)">韓国美肌WAX</button>
             </div>
             <label>オプション</label>
@@ -557,8 +558,7 @@ const times = [
     '13:00', '13:15', '13:30', '13:45',
     '14:00', '14:15', '14:30', '14:45',
     '15:00', '15:15', '15:30', '15:45',
-    '16:00', '16:15', '16:30', '16:45',
-    '17:00'
+    '16:00'
 ];
 
     if (table.rows.length === 0) {
