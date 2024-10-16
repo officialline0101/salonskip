@@ -865,13 +865,6 @@ const times = [
                 continue;
             }
 
-            // 09:00から09:29の時間帯は✕にする
-            if (slotStart.getHours() === 9 && slotStart.getMinutes() < 30) {
-                cell.textContent = '✕';
-                cell.classList.add('unavailable');
-                continue;
-            }
-
             // 17時を過ぎて終了する予約も✕にする
             if (slotEnd.getHours() === 17 && slotEnd.getMinutes() > 0) {
                 cell.textContent = '✕';
