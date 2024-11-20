@@ -702,7 +702,7 @@ function selectVisit(element) {
             };
 
 // フォームデータのチェック
-if (!formData.name || !formData.phone || !formData.selectedSymptom) {
+if (!formData.name || !formData.phone || !formData.selectedSymptom.length === 0) {
     alert('お名前・電話番号・メニューすべてご記入ください。');
     return;
 }
